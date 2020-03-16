@@ -1,0 +1,26 @@
+{
+  "name": "auto-trello",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "luxon": "^1.22.0",
+    "trello-node-api": "0.0.9",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/luxon": "^1.21.0",
+    "@types/node": "^13.9.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1"
+  }
+}
