@@ -17,7 +17,7 @@ const start = async () => {
 
   const cards = (await trello.list.searchField(list.id, 'cards')) as Data[]
 
-  const old = DateTime.fromISO('2019-12-31T00:00:00.000Z')
+  const old = DateTime.fromISO('2020-09-20T00:00:00.000Z')
 
   let i = 0
   for (const card of cards) {

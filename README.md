@@ -2,6 +2,8 @@
 
 Scripts for Trello
 
+- mass archive cards
+
 ## env
 
 ```
