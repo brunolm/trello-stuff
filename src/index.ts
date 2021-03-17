@@ -1,36 +1,26 @@
-import { trello } from './trello'
-import { DateTime } from 'luxon'
+import { Command } from 'commander'
+import * as fs from 'fs'
+import * as path from 'path'
 
-interface Data {
-  id: string
-  name: string
-  dateLastActivity?: string
-}
+import * as packageInfo from '../package.json'
+
+const scripts = fs
+  .readdirSync(path.join(__dirname, 'scripts'))
+  .filter((f) => /[.]ts$/.test(f))
+  .map((f) => f.replace(/[.]ts$/, ''))
 
 const start = async () => {
-  const boards = (await trello.member.searchBoards('me')) as Data[]
+  const program = new Command()
 
-  const { id } = boards.find((x) => x.name === 'Jobs')
+  program.version(packageInfo.version)
 
-  const lists = (await trello.board.searchLists(id)) as Data[]
-  const list = lists.find((x) => /bad/i.test(x.name))
+  for (const script of scripts) {
+    const s = await import(`./scripts/${script}`)
 
-  const cards = (await trello.list.searchField(list.id, 'cards')) as Data[]
-
-  const old = DateTime.fromISO('2020-09-20T00:00:00.000Z')
-
-  let i = 0
-  for (const card of cards) {
-    const time = parseInt(card.id.substring(0, 8), 16)
-    const date = DateTime.fromSeconds(time)
-
-    if (old > date) {
-      ++i
-      await trello.card.update(card.id, { closed: true })
-    }
+    s.register(program)
   }
 
-  console.log(i)
+  program.parse(process.argv)
 }
 
 start()
