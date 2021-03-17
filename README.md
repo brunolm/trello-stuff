@@ -25,3 +25,19 @@ Example
 ```
 npm start -- -- mass-archive -l 5f123...e50 -d 2021-01-20T00:00:00.000Z
 ```
+
+## My Boards
+
+```sh
+Usage: my-boards [options]
+
+Options:
+  -v, --verbose  Verbose
+  -h, --help     display help for command
+```
+
+Example
+
+```
+npm start -- -- my-boards
+```
