@@ -12,7 +12,7 @@
   "dependencies": {
     "commander": "^7.1.0",
     "dotenv": "^8.2.0",
-    "luxon": "^1.22.0",
+    "luxon": "^1.28.1",
     "trello-node-api": "0.0.9",
     "ts-node": "^7.0.1",
     "typescript": "^3.8.3"
